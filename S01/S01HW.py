@@ -16,7 +16,7 @@ category = input("Введите категорию (cafe, fitness, memorial & e
 params = {
     'near': city,
     'limit': 5,
-  	'query': category,
+    'query': category,
     'fields': 'name,location,rating'
 }
 
@@ -29,8 +29,7 @@ response = requests.get(url, params=params, headers=headers)
 
 if response.status_code == 200:
     data = json.loads(response.text)
-    places = data['results']
-    for place in places:
+    for place in data['results']:
         print("\nНазвание:", place.get('name'))
         print("Адрес:", place.get('location').get('formatted_address'))
         print("Рейтинг:", place.get('rating', 'не определился'))
