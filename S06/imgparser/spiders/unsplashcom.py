@@ -5,9 +5,9 @@ from ..items import ImgparserItem
 
 
 class UnsplashcomSpider(scrapy.Spider):
-    name = "unsplashcom"   # название паука
-    allowed_domains = ["unsplash.com"]   # разрешенные домены
-    start_urls = ["https://unsplash.com"]   # стартовая страница
+    name = 'unsplashcom'   # название паука
+    allowed_domains = ['unsplash.com']   # разрешенные домены
+    start_urls = ['https://unsplash.com']   # стартовая страница
 
 
     def parse(self, response: HtmlResponse):
@@ -18,7 +18,7 @@ class UnsplashcomSpider(scrapy.Spider):
             yield response.follow(url=category_link, callback=self.parse)
 
         # список ссылок на картинки
-        img_links = response.xpath('//a[@itemprop="contentUrl"]/@href').getall()
+        img_links = response.xpath("//a[@itemprop='contentUrl']/@href").getall()
         # ссылки дублируются (вместо 20 получаем 60)
         for img_link in set(img_links):
             yield response.follow(img_link, callback=self.img_parse)

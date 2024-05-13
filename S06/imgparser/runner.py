@@ -7,7 +7,7 @@ from S06.imgparser.spiders.unsplashcom import UnsplashcomSpider
 
 if __name__ == '__main__':
     configure_logging()
-    install_reactor("twisted.internet.asyncioreactor.AsyncioSelectorReactor")
+    install_reactor('twisted.internet.asyncioreactor.AsyncioSelectorReactor')
     process = CrawlerProcess(get_project_settings())
     process.crawl(UnsplashcomSpider)
     process.start()

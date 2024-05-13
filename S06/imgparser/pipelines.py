@@ -12,11 +12,11 @@ import csv
 class ImgparserPipeline:
     def __init__(self):
         # Создаем объект для записи данных в csv формате
-        self.writer = csv.writer(open("img_unsplash.csv", "a", newline='', encoding="utf-8"))
+        self.writer = csv.writer(open('img_unsplash.csv', 'a', newline='', encoding='utf-8'))
         self.writer.writerow(['url', 'path', 'name', 'category'])
 
     def process_item(self, item, spider):
-        self.writer.writerow([item["url"], item['image'].get('path'), item["name"], item.get("category", 'no category')])
+        self.writer.writerow([item['url'], item['image'].get('path'), item['name'], item.get('category', 'no category')])
         return item
 
 
