@@ -92,7 +92,7 @@ for url_item in url_list:
     books_list.append(books_dict)
 
 # сохраняем данные в csv
-with open('img_unsplash.csv', 'w', newline='', encoding='utf-8') as f:
+with open('data.csv', 'w', newline='', encoding='utf-8') as f:
     writer = csv.writer(f, dialect='excel', delimiter=';')
     writer.writerow(['name', 'price', 'brend', 'url', 'article', 'author', 'genre', 'language', 'year', 'cover'])
     writer.writerows(books_list)
