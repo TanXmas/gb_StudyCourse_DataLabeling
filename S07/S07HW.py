@@ -82,7 +82,7 @@ for url_item in url_list:
     # Обрабатываем табличные данные
     labels = wait2.until(EC.presence_of_all_elements_located((By.XPATH, '//th')))
     params = wait2.until(EC.presence_of_all_elements_located((By.XPATH, '//td')))
-    description = {label.text: param.text.replace(';', ',') for label, param in zip(labels, params)}
+    description = {label.text: param.text for label, param in zip(labels, params)}
     fields = {'Артикул': 'article', 'Автор': 'author', 'Жанры/тематика': 'genre', 'Языки': 'language',
               'Год выпуска': 'year', 'Обложка': 'cover'}
     for label,field in fields.items():
@@ -93,6 +93,6 @@ for url_item in url_list:
 
 # сохраняем данные в csv
 with open('img_unsplash.csv', 'w', newline='', encoding='utf-8') as f:
-    writer = csv.writer(f, dialect='excel')
+    writer = csv.writer(f, dialect='excel', delimiter=';')
     writer.writerow(['name', 'price', 'brend', 'url', 'article', 'author', 'genre', 'language', 'year', 'cover'])
     writer.writerows(books_list)
